@@ -1,22 +1,7 @@
 <script>
-import { ref } from 'vue';
-import {getListPhotos} from "@/service/unsplash";
 export default {
   setup() {
-    const fetchData = async () => {
-      try {
-        const res = await getListPhotos()
-        console.log(res)
-      } catch (e) {
-        console.error('Ошибка при выполнении запроса:', error);
-      }
-    };
-
-
-    fetchData();
-
     return {
-      fetchData
     };
   }
 };
