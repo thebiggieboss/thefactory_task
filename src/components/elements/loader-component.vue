@@ -46,8 +46,8 @@
       &:nth-child(#{$i}) {
         animation-delay: $animation-delay;
         transform: rotate($blade-rotation);
-      $blade-rotation: $blade-rotation + (360 / $spinner-amount);
-      $animation-delay: $animation-delay + (1 / $spinner-amount);
+      $blade-rotation: $blade-rotation + calc(360 / $spinner-amount);
+      $animation-delay: $animation-delay + calc(1 / $spinner-amount);
       }
     }
   }
