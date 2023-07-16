@@ -26,7 +26,9 @@ export default {
 <template>
   <div class="header-component">
     <div class="header-component__content wrapper">
-      <img src="/factory-logo.ico" alt="" class="header-component__logo">
+      <RouterLink to="/">
+        <img src="/factory-logo.ico" alt="" class="header-component__logo">
+      </RouterLink>
       <div class="header-component__actions">
         <RouterLink to="/">
           <div class="header-component__actions--block" v-if="$route.path !== '/'">

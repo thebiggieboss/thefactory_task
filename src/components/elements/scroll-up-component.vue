@@ -65,5 +65,8 @@ export default {
   .fade-leave-to {
     opacity: 0;
   }
+  @media screen and (max-width: 1400px) {
+    left: calc(100% - 94px);
+  }
 }
 </style>

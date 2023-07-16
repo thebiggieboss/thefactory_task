@@ -1,10 +1,13 @@
 <script>
-export default {
-  setup() {
-    return {
-    };
-  }
-};
+import {searchPhotos} from "@/service/unsplash";
+import {Debounce} from "@/modules/debounce";
+import {ref, watch, computed} from "vue";
+
+// export default {
+//   setup() {
+//
+//   }
+// };
 </script>
 
 <template>
@@ -12,6 +15,7 @@ export default {
     <div class="home-page-head-component__content wrapper">
       <div class="home-page-head-component__search">
         <input
+            @input="$emit('searchElement', $event.target.value)"
             type="text"
             placeholder="Поиск"
         >
