@@ -25,14 +25,12 @@ export default {
     }))
 
     const intersect = () => {
-      if(stopped.value) { //so that there is no re-request
+      if(!!photoList.value.length && !!moreList.value && moreList.value !== photoList.value.length){ //so that there is no re-request
         return
       }
       moreList.value = moreList.value + 10; //Observer counter
-      stopped.value = false;
       if(!!query.value.length) {
         SearchPhotos()
-        return
       } else {
         fetchData()
       }
@@ -42,7 +40,6 @@ export default {
       try {
         const res = await getListPhotos(moreList.value)
         photoList.value = res.data
-        if(moreList.value !== res.data.length) stopped.value = true
       } catch (e) {
         console.error('Ошибка при выполнении запроса:', e);
       } finally {
@@ -56,7 +53,6 @@ export default {
       try {
         debounceRequest = await debounce.run(searchData.value);
         const res = await debounceRequest();
-        if(moreList.value !== res.data.results.length) stopped.value = true
         photoList.value = res.data.results
         debounceRequest = undefined;
         await debounce.reset();
@@ -72,7 +68,7 @@ export default {
     }
 
     const checkQuery = (newVal) => {
-      // moreList.value = null;
+      moreList.value = null;
       stopped.value = false;
       const val = newVal.trim();
       if (!val || val.length === 1) {
